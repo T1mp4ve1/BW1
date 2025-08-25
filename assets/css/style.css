@@ -132,13 +132,13 @@ circle {
 
 .bg {
   stroke: #eeeeee80;
-
 }
 
 .progress {
   stroke: #00FFFF;
+  stroke-linecap: round;
   stroke-dasharray: 283;
-  stroke-dashoffset: 283;
+  stroke-dashoffset: 0;
   transition: stroke-dashoffset 1s linear;
 }
 
@@ -223,7 +223,7 @@ circle {
   border-radius: 40px;
   display: inline-block;
   width: 30%;
-  background-image: linear-gradient(180deg,rgba(201, 0, 145, 1) 0%, rgba(143, 0, 123, 1) 100%);
+  background-image: linear-gradient(180deg, rgba(201, 0, 145, 1) 0%, rgba(143, 0, 123, 1) 100%);
   padding: 1%;
 }
 
