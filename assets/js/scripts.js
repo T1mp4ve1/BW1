@@ -1,5 +1,5 @@
 let sec = 30;
-const display = document.getElementById("timer");
+const display = document.getElementById("circle-timer");
 const countdown = setInterval(() => {
   display.textContent = `00:${sec < 10 ? "0" : ""}${sec}`;
   sec--;

@@ -8,12 +8,16 @@ body {
   color: white;
 }
 
-.test {
+.body_class {
   margin: 0 auto;
   width: 1000px;
   background-image: url(/assets/img/bg.jpg);
-  padding: 5rem;
+  /* padding: 5rem; */
   background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #timer {
@@ -84,11 +88,62 @@ ul li span {
 }
 
 /* DOMANDE */
+.logo {
+  /* vertical-align: middle; */
+  display: inline-block;
+  text-align: left;
+  margin-right: 70%;
+}
+
+.timer {
+    /* vertical-align: middle; */
+  display: inline-block;
+  text-align: right;
+  
+}
+
 #pagina_test {
   text-align: center;
   margin: 0 auto;
-  width: 1000px;
-  background-image: url(/assets/img/bg.jpg);
+  /* width: 1000px; */
   padding: 5rem;
   background-repeat: no-repeat;
 }
+
+/* 
+.circle-timer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.bg {
+  stroke: #eeeeee80;
+}
+
+.progress {
+  stroke: #3498db;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-family: sans-serif;
+} */
