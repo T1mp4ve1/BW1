@@ -1,9 +1,10 @@
-const display = document.getElementsByClassName("number");
+const display = document.getElementsByClassName("number")[0];
 let seconds = 60;
 
 const timer = setInterval(() => {
   let remaning = seconds - 1;
-  (display.innerText = remaning), 1000;
-  return remaning;
-});
-setInterval();
+  display.innerText = remaning;
+  if ((seconds = 0)) {
+    clearInterval();
+  }
+}, 1000);
