@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
+
+/* HEADER */
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   background-color: rgb(139, 139, 139);
+  color: white;
 }
+
 .test {
   margin: 0 auto;
   width: 1000px;
@@ -11,6 +15,7 @@ body {
   padding: 5rem;
   background-repeat: no-repeat;
 }
+
 #timer {
   font-size: 2em;
   font-family: "Courier New", monospace;
@@ -18,37 +23,46 @@ body {
   text-align: center;
   margin-top: 20px;
 }
+
 .logo img {
   width: 150px;
 }
+
 h1 {
   font-size: 72px;
   color: white;
   font-weight: 300;
   line-height: 4rem;
 }
+
 h1 span {
   font-weight: 800;
 }
+
 h2 {
   margin: 0;
   color: #c2128d;
 }
+
 p {
   font-weight: 200;
   color: white;
 }
+
 ul {
   margin-top: 50px;
 }
+
 ul li {
   font-weight: 200;
   color: white;
   margin-bottom: 5px;
 }
+
 ul li span {
   font-weight: 800;
 }
+
 .bottom {
   margin-top: 80px;
 }
@@ -56,6 +70,7 @@ ul li span {
 .bottom label {
   color: white;
 }
+
 .bottom button {
   margin-left: 250px;
   background-color: #00ffff;
@@ -66,4 +81,15 @@ ul li span {
   font-weight: 700;
   box-shadow: 3px 2px 24px #00ffff;
   border: none;
+}
+
+/* DOMANDE */
+
+#pagina_test {
+  text-align: center;
+  margin: 0 auto;
+  width: 1000px;
+  background-image: url(/assets/img/bg.jpg);
+  padding: 5rem;
+  background-repeat: no-repeat;
 }
