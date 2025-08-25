@@ -1,7 +1,9 @@
-let sec = 30;
-const display = document.getElementById("circle-timer");
-const countdown = setInterval(() => {
-  display.textContent = `00:${sec < 10 ? "0" : ""}${sec}`;
-  sec--;
-  if (sec < 0) clearInterval(countdown);
-}, 1000);
+const display = document.getElementsByClassName("number");
+let seconds = 60;
+
+const timer = setInterval(() => {
+  let remaning = seconds - 1;
+  (display.innerText = remaning), 1000;
+  return remaning;
+});
+setInterval();
