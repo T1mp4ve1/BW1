@@ -71,6 +71,21 @@ ul li span {
   color: white;
 }
 
+.bottom input {
+appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid #ffffff;
+position: relative;
+cursor: pointer;
+vertical-align: middle;
+margin-right: 8px;
+}
+
+.bottom input:checked {
+  background-color: #00ffff;
+}
+
 .bottom button {
   margin-left: 250px;
   background-color: #00ffff;
@@ -90,8 +105,8 @@ ul li span {
   text-align: left;
   width: 60%;
   position: absolute;
-  top: 15%;
-  left: 57%;
+  top: 10%;
+  left: 50%;
   transform: translate(-50%, -50%);
   /* margin: 100px 0 0 500px; */
 }
@@ -101,9 +116,10 @@ ul li span {
 }
 
 .timer {
-  vertical-align: middle;
-  display: inline-block;
-  text-align: right;
+  position: absolute;
+  top: 0%;
+  left: 90%;
+  transform: translate(-50%, -120%);
   width: 10%;
 }
 
@@ -118,7 +134,7 @@ ul li span {
 /* TIMER */
 .circle-timer {
   position: relative;
-  width: 120%;
+  width: 100%;
   text-align: center;
 }
 
@@ -136,6 +152,7 @@ circle {
 
 .bg {
   stroke: #eeeeee80;
+  stroke-width: 10;
 }
 
 .progress {
@@ -144,6 +161,7 @@ circle {
   stroke-dasharray: 283;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset s linear;
+  stroke-width: 10;
 }
 
 .time {
@@ -158,14 +176,16 @@ circle {
 .lett {
   padding: 0;
   margin: 0;
-  font-size: 0.5rem;
+  margin-bottom: -5px;
+  margin-top: -5px;
+  font-size: 0.4rem;
 }
 
 .number {
   padding: 0;
   margin: 0;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 30px;
   font-family: "Outfit", sans-serif;
 }
 
@@ -306,7 +326,7 @@ circle {
   transform: rotate(90deg) scaleX(-1);
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0px 0px 10px #000000);
+  filter: drop-shadow(0px 0px 10px #000000a1);
 }
 
 circle {
@@ -314,11 +334,11 @@ circle {
   stroke-width: 14;
 }
 
-.bg {
+.bg-graph {
   stroke: #c2128d;
 }
 
-.progress {
+.progress-graph {
   stroke: #00ffff;
   stroke-linecap: square;
   stroke-dasharray: 283;
@@ -328,12 +348,15 @@ circle {
 
 .graph-cont {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
   font-family: sans-serif;
+  width: 20%;
+  word-break: break-word;
 }
+
 
 .graph-lett {
   padding: 0;
@@ -355,7 +378,7 @@ circle {
 }
 
 h4 {
-  font-size: 66px;
+  font-size: 50px;
   margin: 0;
 }
 
@@ -524,4 +547,9 @@ h5 {
 #comment:focus {
   outline: none;
   caret-color: #00ffff;
+}
+
+
+#test {
+  width: 50%;
 }
