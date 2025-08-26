@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap");
 
+
+/* GENERAL */
+
+.hide {
+  display: none;
+}
+
 /* HEADER */
 body {
   font-family: "Inter", sans-serif;
@@ -81,11 +88,14 @@ ul li span {
   vertical-align: top;
   display: inline-block;
   text-align: left;
-  margin-right: 50%;
-  width: 80%;
-  margin-top: 5%;
-  margin-left: 28%;
+  width: 60%;
+  position: absolute;
+  top: 15%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  /* margin: 100px 0 0 500px; */
 }
+
 .logo img {
   width: 200px;
 }
@@ -280,12 +290,10 @@ circle {
 /* GRAPH */
 
 .graph {
-  /* margin-left: 60px;
-  margin-right: 60px; */
   vertical-align: middle;
   display: inline-block;
-  /* text-align: right; */
   width: 40%;
+
 }
 
 .circle-graph {
@@ -303,7 +311,7 @@ circle {
 
 circle {
   fill: none;
-  stroke-width: 12;
+  stroke-width: 14;
 }
 
 .bg {
@@ -342,6 +350,8 @@ circle {
 .results {
   text-align: center;
   font-family: "Outfit", sans-serif;
+  width: 100%;
+  margin: auto;
 }
 
 h4 {
@@ -350,11 +360,10 @@ h4 {
 }
 
 .correct {
-  width: 30%;
-  margin-right: 5%;
+  width: 18%;
+  margin-right: 10%;
   text-align: left;
   font-weight: 300;
-  margin: 0;
   font-size: 22px;
   display: inline-block;
   vertical-align: middle;
@@ -362,43 +371,49 @@ h4 {
 }
 
 .wrong {
-  width: 30%;
-  margin-left: 5%;
+  width: 18%;
+  margin-left: 10%;
   text-align: right;
   font-weight: 300;
-  margin: 0;
   font-size: 22px;
   display: inline-block;
   vertical-align: middle;
   color: #ddd2e1;
 }
+
 h5 {
   font-size: 64px;
   margin: 0;
   font-weight: 300;
   line-height: 56px;
 }
+
 .paragraph-results {
   margin: 0;
   margin-bottom: 50px;
   font-size: 40px;
 }
+
 .percent-wrong {
   font-size: 60px;
   font-weight: 600;
 }
+
 .quest {
   font-size: 16px;
   margin: 0;
 }
+
 .percent-correct {
   font-size: 60px;
   font-weight: 600;
 }
+
 .quest {
   font-size: 22px;
   margin: 0;
 }
+
 .results button {
   background-color: #ffffff00;
   color: #ffffff;
@@ -410,15 +425,22 @@ h5 {
   margin-top: 50px;
   box-shadow: 0px 0px 22px #40246e;
 }
+
 .graph-lettTitle {
   font-size: 20px;
 }
+
 .middle {
   white-space: nowrap;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
 }
+
 .graph-lettTitle span {
   color: #00ffff;
 }
+
 .graph-lettp {
   font-size: 16px;
 }
@@ -430,27 +452,34 @@ h5 {
   font-family: "Outfit", sans-serif;
   margin: auto;
   width: 70%;
+  /* display: none; */
 }
+
 .stars {
   margin-bottom: 50px;
 }
+
 .star {
   display: inline-block;
   fill: #0b113b;
 }
+
 .star img {
   filter: brightness(0.3);
   width: 50px;
   margin-left: 10px;
 }
+
 .star-1 {
   display: inline-block;
   fill: #0b113b;
 }
+
 .star-1 img {
   filter: brightness(1);
   width: 50px;
 }
+
 .feedback button {
   display: block;
   margin: 0 auto;
@@ -464,26 +493,35 @@ h5 {
   box-shadow: 3px 2px 24px #00ffff;
   border: none;
 }
+
 .feedback h4 {
   margin-top: 50px;
   font-size: 56px;
 }
+
 .paragraph-feed {
   font-size: 27px;
   font-weight: 300;
   margin-top: 10px;
 }
+
 .paragraph-input {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 300;
 }
+
 #comment {
   background: none;
   border: none;
   border-bottom: 2px solid #c2128d;
   width: 100%;
   height: 40px;
-  font-size: 24px;
+  font-size: 18px;
   padding-left: 2.3rem;
   margin-bottom: 20px;
+}
+
+#comment:focus {
+  outline: none;
+  caret-color: #00ffff;
 }
