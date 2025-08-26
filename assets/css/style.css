@@ -139,7 +139,7 @@ circle {
   stroke-linecap: round;
   stroke-dasharray: 283;
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset s linear;
 }
 
 .time {
@@ -249,6 +249,37 @@ circle {
   transform: translate(-50%, -50%);
 }
 
-/* .left {
+#questions h3 {
+  line-height: 40px;
+  width: 50%;
+  margin: 5% auto;
+  font-weight: 300;
+  font-size: 2.5rem;
+}
+
+#left1 {
   margin-right: 10px;
-} */
+}
+
+#right2 {
+  margin-left: 10px;
+}
+
+#left3 {
+  margin-right: 10px;
+}
+
+#right4 {
+  margin-left: 10px;
+}
+
+#questionB {
+  letter-spacing: 3px;
+  font-weight: 400;
+  font-family: "Outfit", sans-serif;;
+  margin-top: 10%;
+}
+
+#evidenz {
+  color: rgba(201, 0, 145, 1);
+}
