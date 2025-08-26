@@ -22,7 +22,7 @@ body {
 }
 
 .logo img {
-  width: 200px;
+  width: 150px;
 }
 
 h1 {
@@ -389,7 +389,7 @@ h5 {
   font-weight: 300;
   line-height: 56px;
 }
-.pragraph-results {
+.paragraph-results {
   margin: 0;
   margin-bottom: 50px;
   font-size: 40px;
@@ -433,9 +433,15 @@ h5 {
 .graph-lettp {
   font-size: 16px;
 }
+
 /*FEEDBACK */
+
 .feedback {
+  font-family: "Outfit", sans-serif;
   text-align: center;
+}
+.stars {
+  margin-bottom: 60px;
 }
 .star {
   display: inline-block;
@@ -461,4 +467,17 @@ h5 {
   font-weight: 700;
   box-shadow: 3px 2px 24px #00ffff;
   border: none;
+}
+.feedback h4 {
+  margin-top: 50px;
+  font-size: 56px;
+}
+.paragraph-feed {
+  font-size: 27px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+.paragraph-input {
+  font-size: 25px;
+  font-weight: 300;
 }
