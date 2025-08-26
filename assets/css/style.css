@@ -83,8 +83,8 @@ ul li span {
   text-align: left;
   margin-right: 50%;
   width: 80%;
-  margin-top: 10%;
-  margin-left: 30%;
+  margin-top: 5%;
+  margin-left: 28%;
 }
 .logo img {
   width: 200px;
@@ -426,12 +426,13 @@ h5 {
 /*FEEDBACK */
 
 .feedback {
-  font-family: "Outfit", sans-serif;
   text-align: center;
-  width: 80%;
+  font-family: "Outfit", sans-serif;
+  margin: auto;
+  width: 70%;
 }
 .stars {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 .star {
   display: inline-block;
@@ -439,7 +440,7 @@ h5 {
 }
 .star img {
   filter: brightness(0.3);
-  width: 60px;
+  width: 50px;
   margin-left: 10px;
 }
 .star-1 {
@@ -448,7 +449,7 @@ h5 {
 }
 .star-1 img {
   filter: brightness(1);
-  width: 60px;
+  width: 50px;
 }
 .feedback button {
   display: block;
