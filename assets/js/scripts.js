@@ -135,10 +135,9 @@ button_2.classList.add("button");
 button_3.classList.add("button");
 button_4.classList.add("button");
 
-const randomQuestions = (Array) => {
-  arrayLegth = Array.length + 1;
-  let num = Math.floor(Math.random() * arrayLegth);
-  return Array[num];
+const randomQuestions = (array) => {
+  let num = Math.floor(Math.random() * array.length);
+  return array[num];
 };
 
 const randomAnswer = (question) => {
@@ -151,10 +150,7 @@ const randomAnswer = (question) => {
   }
   return allAnswer;
 };
-console.log(randomAnswer(randomQuestions(questions)));
-console.log(randomAnswer(randomQuestions(questions)));
-console.log(randomAnswer(randomQuestions(questions)));
-console.log(randomAnswer(randomQuestions(questions)));
+
 console.log(randomAnswer(randomQuestions(questions)));
 
 const get = document.addEventListener("testPageVisible", () => {
