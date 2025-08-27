@@ -126,15 +126,15 @@ const down = document.getElementById("down");
 const proceedConteiner = document.querySelector(".proceed");
 
 const question = document.querySelector("#questions h3");
-const button_1 = document.createElement("div");
-const button_2 = document.createElement("div");
-const button_3 = document.createElement("div");
-const button_4 = document.createElement("div");
+// const button_1 = document.createElement("div");
+// const button_2 = document.createElement("div");
+// const button_3 = document.createElement("div");
+// const button_4 = document.createElement("div");
 
-button_1.classList.add("button");
-button_2.classList.add("button");
-button_3.classList.add("button");
-button_4.classList.add("button");
+// button_1.classList.add("button");
+// button_2.classList.add("button");
+// button_3.classList.add("button");
+// button_4.classList.add("button");
 
 const randomQuestions = (array) => {
   let num = Math.floor(Math.random() * array.length);
