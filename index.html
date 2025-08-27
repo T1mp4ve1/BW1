@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benchmark</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Benchmark</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-
-<body>
-  <div class="logo">
-    <img src="./assets/img/epicode_logo.png" alt="logo" />
-  </div>
-
-  <div class="body_class">
-    <div class="welcome">
-      <h1>Welcome to <br><span>your exam</span></h1>
-      <h2>Instruction</h2>
-      <p>
-        We don't expect most engineers to know the answers to all of these
-        questions,<br> so don't worry if you're unsure of a few of them.
-      </p>
-      <ul>
-        <li>Each question is <span>timed</span> and can only be <span>answered once</span>.</li>
-        <li>
-          Changing browser tab or opening other windows will <span> invalidate the
-            question.</span>
-        </li>
-        <li>This exam will take approx.<span> 0-5 minutes.</span></li>
-      </ul>
-      <div class="bottom">
-        <input type="checkbox" />
-        <label for="checkbox">
-          I promise to answer myself without help from anyone</label>
-        <button>PROCEED</button>
-      </div>
+  <body>
+    <div class="logo">
+      <img src="./assets/img/epicode_logo.png" alt="logo" />
     </div>
 
-
-
-
-    <!-- <div id="pagina_test">
-
-      <div class="timer">
-        <div class="circle-timer">
-          <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" class="bg" />
-            <circle cx="50" cy="50" r="45" class="progress" />
-          </svg>
-          <div class="time" id="timeDisplay">
-            <p class="lett">SECONDS</p>
-            <p class="number">60</p>
-            <p class="lett">REMANING</p>
-          </div>
+    <div class="body_class">
+      <div class="welcome">
+        <h1>Welcome to <br /><span>your exam</span></h1>
+        <h2>Instruction</h2>
+        <p>
+          We don't expect most engineers to know the answers to all of these
+          questions,<br />
+          so don't worry if you're unsure of a few of them.
+        </p>
+        <ul>
+          <li>
+            Each question is <span>timed</span> and can only be
+            <span>answered once</span>.
+          </li>
+          <li>
+            Changing browser tab or opening other windows will
+            <span> invalidate the question.</span>
+          </li>
+          <li>This exam will take approx.<span> 0-5 minutes.</span></li>
+        </ul>
+        <div class="bottom">
+          <input type="checkbox" />
+          <label for="checkbox">
+            I promise to answer myself without help from anyone</label
+          >
+          <button id="proceed">PROCEED</button>
         </div>
       </div>
 
-      <div id="questions">
-        <h3>How can i create a chekbox in HTML?</h3>
-
-        <div id="up">
-          <div class="button_choice" id="left1">
-            <input type="radio" class="answer" name="answer" />
-            <label for="radio">Ciao</label>
-          </div>
-          <div class="button" id="right4">
-            <input type="radio" class="answer" name="answer" />
-            <label for="radio">Ciao</label>
-          </div>
-        </div>
-
-        <div id="down">
-          <div class="button" id="left3">
-            <input type="radio" class="answer" name="answer" />
-            <label for="radio">Ciao</label>
-          </div>
-          <div class="button" id="right2">
-            <input type="radio" class="answer" name="answer" />
-            <label for="radio">Ciao</label>
+      <div id="pagina_test" hidden>
+        <div class="timer">
+          <div class="circle-timer">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" class="bg" />
+              <circle cx="50" cy="50" r="45" class="progress" />
+            </svg>
+            <div class="time" id="timeDisplay">
+              <p class="lett">SECONDS</p>
+              <p class="number">60</p>
+              <p class="lett">REMANING</p>
+            </div>
           </div>
         </div>
 
-        <p id="questionB">QUESTION 1<span id="evidenz">/10</span></p>
+        <div id="questions">
+          <h3>How can i create a chekbox in HTML?</h3>
+
+          <div id="up">
+            <div class="button_choice" id="left1">
+              <input type="radio" class="answer" name="answer" />
+              <label for="radio">Ciao</label>
+            </div>
+            <div class="button" id="right4">
+              <input type="radio" class="answer" name="answer" />
+              <label for="radio">Ciao</label>
+            </div>
+          </div>
+
+          <div id="down">
+            <div class="button" id="left3">
+              <input type="radio" class="answer" name="answer" />
+              <label for="radio">Ciao</label>
+            </div>
+            <div class="button" id="right2">
+              <input type="radio" class="answer" name="answer" />
+              <label for="radio">Ciao</label>
+            </div>
+          </div>
+
+          <p id="questionB">QUESTION 1<span id="evidenz">/10</span></p>
+        </div>
       </div>
-    </div> -->
 
-
-    <!-- <div class="results">
+      <!-- <div class="results">
       <div class="graph-cont">
         <p class="graph-lettTitle">Congratulation! <br /><span> You passed the exam.</span></p>
         <p class="graph-lettp">We'll send you the certificate in few minutes.
@@ -121,7 +120,7 @@
       <button>RATE US</button>
     </div> -->
 
-    <!-- <div class="feedback">
+      <!-- <div class="feedback">
         <h4>Tell us how it's going</h4>
         <p class="paragraph-feed">From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?</p>
         <div class="stars">
@@ -140,9 +139,7 @@
         <input type="text" name="comment" id="comment" placeholder="Write your comment here" />
         <button>SEND FEEDBACK</button>
     </div> -->
-
-  </div>
-  <script src="assets/js/scripts.js"></script>
-</body>
-
+    </div>
+    <script src="assets/js/scripts.js"></script>
+  </body>
 </html>
