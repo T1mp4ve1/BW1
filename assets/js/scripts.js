@@ -21,6 +21,8 @@ const test = document.querySelector("#pagina_test");
 proceedButton.addEventListener("click", () => {
   welcome.setAttribute("hidden", "true");
   test.removeAttribute("hidden");
+
+  document.dispatchEvent(new CustomEvent("testPageVisible"));
 });
 
 const questions = [
@@ -119,26 +121,91 @@ const questions = [
   },
 ];
 
-// let seconds = 60;
-// const count = document.getElementsByClassName("number")[0];
-// const progress = document.getElementsByClassName("progress")[0];
+const up = document.getElementById("up");
+const down = document.getElementById("down");
 
-// const radius = 45;
-// const circumference = 2 * Math.PI * radius;
+const question = document.querySelector("#questions h3");
+const button_1 = document.createElement("div");
+const button_2 = document.createElement("div");
+const button_3 = document.createElement("div");
+const button_4 = document.createElement("div");
 
-// function setProgress(percent) {
-//   const offset = circumference - (percent / 100) * circumference;
-//   progress.style.strokeDashoffset = offset;
-// }
+button_1.classList.add("button");
+button_2.classList.add("button");
+button_3.classList.add("button");
+button_4.classList.add("button");
 
-// const timer = setInterval(() => {
-//   const remaining = seconds--;
-//   count.innerText = remaining;
+const randomQuestions = (Array) => {
+  arrayLegth = Array.length + 1;
+  let num = Math.floor(Math.random() * arrayLegth);
+  return Array[num];
+};
 
-//   const percent = (seconds / 60) * 100;
-//   setProgress(percent);
+const randomAnswer = (question) => {
+  const num = Math.floor(Math.random() * 4);
+  let allAnswer = [];
+  allAnswer.push(question.correct_answer);
+  console.log(question)
+  for (let i = 0; i < question.incorrect_answers.length; i++) {
+    allAnswer.push(question.incorrect_answers[i]);
+  }
+  return allAnswer;
+};
+console.log(randomAnswer(randomQuestions(questions)));
+console.log(randomAnswer(randomQuestions(questions)));
+console.log(randomAnswer(randomQuestions(questions)));
+console.log(randomAnswer(randomQuestions(questions)));
+console.log(randomAnswer(randomQuestions(questions)));
 
-//   if (remaining <= 0) {
-//     clearInterval(timer);
-//   }
-// }, 1000);
+const get = document.addEventListener("testPageVisible", () => {
+  if (!test.hidden) {
+    timerActive();
+    question.innerText = questions[0].question;
+    button_1.innerText = questions[0].correct_answer;
+    up.appendChild(button_1);
+
+    button_2.innerText = questions[0].incorrect_answers[0];
+    up.appendChild(button_2);
+
+    button_3.innerText = questions[0].incorrect_answers[1];
+    down.appendChild(button_3);
+
+    button_4.innerText = questions[0].incorrect_answers[2];
+    down.appendChild(button_4);
+
+    // let myIndex = 0;
+    // const changeQuestion = setInterval(() => {
+    //   questions.forEach((e) => {
+    //     question.innerText = e.question;
+    //   });
+    //   changeQuestion();
+    // }, 60000);
+  }
+});
+
+const timerActive = () => {
+  let seconds = 60;
+  const count = document.getElementsByClassName("number")[0];
+  const progress = document.getElementsByClassName("progress")[0];
+
+  const radius = 45;
+  const circumference = 2 * Math.PI * radius;
+
+  function setProgress(percent) {
+    const offset = circumference - (percent / 100) * circumference;
+    progress.style.strokeDashoffset = offset;
+  }
+
+  const timer = setInterval(() => {
+    const remaining = seconds--;
+    count.innerText = remaining;
+
+    const percent = (seconds / 60) * 100;
+    setProgress(percent);
+
+    if (remaining <= 0) {
+      clearInterval(timer);
+      timerActive();
+    }
+  }, 1000);
+};

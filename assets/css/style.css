@@ -211,6 +211,7 @@ circle {
   width: 30%;
   background-color: #ffffff25;
   padding: 1%;
+  margin: 5px 10px;
 }
 
 .button::before {
@@ -291,7 +292,7 @@ circle {
   font-size: 2.5rem;
 }
 
-#left1 {
+/* #left1 {
   margin-right: 10px;
 }
 
@@ -305,7 +306,7 @@ circle {
 
 #right4 {
   margin-left: 10px;
-}
+} */
 
 #questionB {
   letter-spacing: 3px;
