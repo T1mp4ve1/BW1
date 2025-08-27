@@ -32,13 +32,18 @@ const questions = [
     difficulty: "easy",
     question: "What does CPU stand for?",
     correct_answer: "Central Processing Unit",
-    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
+    incorrect_answers: [
+      "Central Process Unit",
+      "Computer Personal Unit",
+      "Central Processor Unit",
+    ],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+    question:
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -54,7 +59,8 @@ const questions = [
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question:
+      "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
@@ -62,7 +68,8 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the most preferred image format used for logos in the Wikimedia database?",
+    question:
+      "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
     incorrect_answers: [".png", ".jpeg", ".gif"],
   },
@@ -72,13 +79,18 @@ const questions = [
     difficulty: "easy",
     question: "In web design, what does CSS stand for?",
     correct_answer: "Cascading Style Sheet",
-    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
+    incorrect_answers: [
+      "Counter Strike: Source",
+      "Corrective Style Sheet",
+      "Computer Style Sheet",
+    ],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the code name for the mobile operating system Android 7.0?",
+    question:
+      "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
     incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
@@ -102,7 +114,8 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "Which programming language shares its name with an island in Indonesia?",
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
@@ -142,28 +155,75 @@ const randomAnswer = (answer) => {
   answer.sort(() => Math.random() - 0.5);
   return answer;
 };
-const button = document.createElement("div");
-button.classList.add("button");
+
 const getQuestion = () => {
   const currentQuestion = randomQuestions(questions);
   const currentAnswer = randomAnswer(allAnswer(currentQuestion));
-
   question.innerText = currentQuestion.question;
   for (let i = 0; i < currentAnswer.length; i++) {
     if (i < 2) {
-      button.innerText = currentAnswer[i];
+      const button = document.createElement("div");
+      const button_input = document.createElement("input");
+      const button_label = document.createElement("label");
+      button_input.classList.add("answer");
+      button_input.type = "radio";
+      button_input.name = "radio";
+      button_input.classList.add(".button_input");
+      button_label.htmlFor = "radio";
+      button.classList.add("button");
+      button_label.innerText = currentAnswer[i];
+      button.appendChild(button_input);
+      button.appendChild(button_label);
       up.appendChild(button);
+      button.id = `id${i}`;
+      button.addEventListener("click", () => {
+        let selected = document.querySelector(".button_choice");
+        if (selected) {
+          selected.classList.remove("button_choice");
+        }
+
+        button.classList.add("button_choice");
+        button_input.checked = true;
+      });
     } else {
-      button.innerText = currentAnswer[i];
-      down.appendChild(button);
+      const button = document.createElement("div");
+      const button_input = document.createElement("input");
+      const button_label = document.createElement("label");
+      button_input.classList.add("answer");
+      button_input.type = "radio";
+      button_input.name = "radio";
+      button_input.classList.add(".button_input");
+      button_label.htmlFor = "radio";
+      button.classList.add("button");
+      button_label.innerText = currentAnswer[i];
+      button.appendChild(button_input);
+      button.appendChild(button_label);
+      button.id = `id${i}`;
+      up.appendChild(button);
+      button.addEventListener("click", () => {
+        let selected = document.querySelector(".button_choice");
+        if (selected) {
+          selected.classList.remove("button_choice");
+        }
+
+        button.classList.add("button_choice");
+
+        button_input.checked = true;
+      });
     }
   }
 };
 
-button.addEventListener("click", () => {
-  button.classList.remove("button");
-  button.classList.add("button_choice");
-});
+// const getIdButton = () => {
+//   // const buttons = document.querySelectorAll("#id0, #id1, #id2, #id3");
+//   const button = document.querySelector(".button");
+
+//   // console.log(buttons);
+//   button.addEventListener("click", () => {
+//     // buttons.forEach((e) => e.classList.remove("button_choice"));
+//     button.classList.toggle("button_choice");
+//   });
+// };
 
 console.log(randomAnswer(allAnswer(randomQuestions(questions))));
 console.log(proceedConteiner);
