@@ -142,17 +142,25 @@ const randomAnswer = (answer) => {
   answer.sort(() => Math.random() - 0.5);
   return answer;
 };
-const button = document.createElement("div");
-button.classList.add("button");
+
 const getQuestion = () => {
   const currentQuestion = randomQuestions(questions);
   const currentAnswer = randomAnswer(allAnswer(currentQuestion));
-
   question.innerText = currentQuestion.question;
   for (let i = 0; i < currentAnswer.length; i++) {
     if (i < 2) {
       //button.innerText = currentAnswer[i];
       up.appendChild(button);
+      button.id = `id${i}`;
+      button.addEventListener("click", () => {
+        let selected = document.querySelector(".button_choice");
+        if (selected) {
+          selected.classList.remove("button_choice");
+        }
+
+        button.classList.add("button_choice");
+        button_input.checked = true;
+      });
     } else {
       //button.innerText = currentAnswer[i];
       down.appendChild(button);
@@ -160,10 +168,16 @@ const getQuestion = () => {
   }
 };
 
-button.addEventListener("click", () => {
-  button.classList.remove("button");
-  button.classList.add("button_choice");
-});
+// const getIdButton = () => {
+//   // const buttons = document.querySelectorAll("#id0, #id1, #id2, #id3");
+//   const button = document.querySelector(".button");
+
+//   // console.log(buttons);
+//   button.addEventListener("click", () => {
+//     // buttons.forEach((e) => e.classList.remove("button_choice"));
+//     button.classList.toggle("button_choice");
+//   });
+// };
 
 console.log(randomAnswer(allAnswer(randomQuestions(questions))));
 console.log(proceedConteiner);
