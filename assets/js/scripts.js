@@ -121,31 +121,27 @@ const questions = [
   },
 ];
 
-
 const up = document.getElementById("up");
 const down = document.getElementById("down");
 const proceedConteiner = document.querySelector(".proceed");
 
 const question = document.querySelector("#questions h3");
-// const button_1 = document.createElement("div");
-// const button_2 = document.createElement("div");
-// const button_3 = document.createElement("div");
-// const button_4 = document.createElement("div");
 
-// button_1.classList.add("button");
-// button_2.classList.add("button");
-// button_3.classList.add("button");
-// button_4.classList.add("button");
+let answeredQuestion = [];
+
+let questionPos = [];
 
 const randomQuestions = (array) => {
   let num = Math.floor(Math.random() * array.length);
+  answeredQuestion = array[num];
+  questionPos = [num];
   return array[num];
 };
 
 const allAnswer = (question) => {
   let allAnswer = [];
   allAnswer.push(question.correct_answer);
-  console.log(question);
+
   for (let i = 0; i < question.incorrect_answers.length; i++) {
     allAnswer.push(question.incorrect_answers[i]);
   }
@@ -157,7 +153,20 @@ const randomAnswer = (answer) => {
   return answer;
 };
 
+const proceed = document.getElementById("proceedQuest");
+
+const proceedOn = () => {
+  proceed.style.backgroundColor = "#00ffff";
+  proceed.style.boxShadow = "3px 2px 24px #00ffff";
+  proceed.style.cursor = "pointer";
+};
+
+let correctAnswer = [];
+let wrongtAnswer = [];
+
 const getQuestion = () => {
+  let existButton = document.querySelectorAll(".button");
+  existButton.forEach((button) => button.remove());
   const currentQuestion = randomQuestions(questions);
   const currentAnswer = randomAnswer(allAnswer(currentQuestion));
   question.innerText = currentQuestion.question;
@@ -182,7 +191,7 @@ const getQuestion = () => {
         if (selected) {
           selected.classList.remove("button_choice");
         }
-
+        proceedOn();
         button.classList.add("button_choice");
         button_input.checked = true;
       });
@@ -206,41 +215,21 @@ const getQuestion = () => {
         if (selected) {
           selected.classList.remove("button_choice");
         }
-
+        proceedOn();
         button.classList.add("button_choice");
 
         button_input.checked = true;
+        // console.log(answeredQuestion);
       });
     }
   }
 };
 
-// const getIdButton = () => {
-//   // const buttons = document.querySelectorAll("#id0, #id1, #id2, #id3");
-//   const button = document.querySelector(".button");
-
-//   // console.log(buttons);
-//   button.addEventListener("click", () => {
-//     // buttons.forEach((e) => e.classList.remove("button_choice"));
-//     button.classList.toggle("button_choice");
-//   });
-// };
-
-console.log(randomAnswer(allAnswer(randomQuestions(questions))));
-console.log(proceedConteiner);
 const get = document.addEventListener("testPageVisible", () => {
   if (!test.hidden) {
     timerActive();
     getQuestion();
   }
-
-  // let myIndex = 0;
-  // const changeQuestion = setInterval(() => {
-  //   questions.forEach((e) => {
-  //     question.innerText = e.question;
-  //   });
-  //   changeQuestion();
-  // }, 60000);
 });
 
 const timerActive = () => {
@@ -256,6 +245,26 @@ const timerActive = () => {
     progress.style.strokeDashoffset = offset;
   }
 
+  proceed.addEventListener("click", () => {
+    let selectedButton = document.querySelector(".button_choice");
+    if (selectedButton) {
+      let text = selectedButton.querySelector("label").innerText;
+      if (text === answeredQuestion.correct_answer) {
+        correctAnswer.push(text);
+      } else {
+        wrongtAnswer.push(text);
+      }
+      questions.splice(questionPos, 1);
+    }
+    clearInterval(timer);
+    timerActive();
+
+    getQuestion();
+    console.log(answeredQuestion);
+    console.log(questions);
+    console.log(correctAnswer);
+    console.log(wrongtAnswer);
+  });
   const timer = setInterval(() => {
     const remaining = seconds--;
     count.innerText = remaining;
@@ -266,6 +275,16 @@ const timerActive = () => {
     if (remaining <= 0) {
       clearInterval(timer);
       timerActive();
+      let selectedButton = document.querySelector(".button_choice");
+      if (!selectedButton) {
+        wrongtAnswer.push(0);
+      } else if (text === answeredQuestion.correct_answer) {
+        let text = selectedButton.querySelector("label").innerText;
+        correctAnswer.push(text);
+      }
+      getQuestion();
+      console.log(correctAnswer);
+      console.log(wrongtAnswer);
     }
   }, 1000);
 };
