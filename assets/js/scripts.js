@@ -151,12 +151,13 @@ const proceedOff = () => {
   proceed.style.backgroundColor = "grey";
   proceed.style.boxShadow = "3px 2px 24px grey";
   proceed.style.cursor = "pointer";
-  proceed.disabled;
+  proceed.setAttribute("disabled", true);
 };
 let correctAnswer = [];
 let wrongtAnswer = [];
-proceedOff();
+
 const getQuestion = () => {
+  proceedOff();
   let existButton = document.querySelectorAll(".button");
   existButton.forEach((button) => button.remove());
   const currentQuestion = randomQuestions(questions);
