@@ -273,7 +273,8 @@ proceed.addEventListener("click", () => {
   }
   numberOfQuestions.push(1);
   if (questions.length < 1) {
-    GraphResult()
+    GraphResult();
+    resultsText();
     test.setAttribute("hidden", "true");
     results.removeAttribute("hidden");
     clearInterval(timer);
@@ -324,7 +325,8 @@ const timerActive = () => {
         correctAnswer.push(selectedButton.querySelector(".label").innerText);
       }
       if (questions.length < 1) {
-        GraphResult()
+        GraphResult();
+        resultsText();
         test.setAttribute("hidden", "true");
         results.removeAttribute("hidden");
         clearInterval(timer);
@@ -351,6 +353,8 @@ const percCorrect = document.addEventListener("resultsPage", () => {
   correct.innerText = `${percent.toString()}%`;
   let percentW = (wrongtAnswer.length / 10) * 100;
   incorrect.innerText = `${percentW.toString()}%`;
+  answers();
+  console.log(correctAnswer.length, wrongtAnswer.length);
 });
 
 const radiusGraph = 40;
@@ -366,3 +370,23 @@ function GraphResult() {
   let percent = (correctAnswer.length / 10) * 100;
   setProgressResult(percent);
 }
+
+const answer_correct = document.querySelector(".answer-correct");
+const answer_wrong = document.querySelector(".answer-wrong");
+
+const answers = () => {
+  answer_correct.innerText = correctAnswer.length.toString();
+  answer_wrong.innerText = wrongtAnswer.length.toString();
+};
+
+const graph_lettTitle = document.querySelector(".graph-lettTitle");
+const PassedOrNo = document.getElementById("PasedOrNo");
+const graph_lettp = document.querySelector(".graph-lettp");
+
+const resultsText = () => {
+  if (correctAnswer.length < 6) {
+    graph_lettTitle.innerHTML = `Great effort! <br/><span id="PasedOrNo" class="red">Keep it up.</span>`;
+    graph_lettp.innerText =
+      "We have identified the areas you should focus on. Take your time to prepare and retake the exam. We're here to support you on your journey!";
+  }
+};

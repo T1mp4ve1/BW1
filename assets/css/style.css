@@ -562,3 +562,7 @@ h5 {
 #test {
   width: 50%;
 }
+
+.red {
+  color: red !important;
+}
