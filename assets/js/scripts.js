@@ -4,6 +4,7 @@ const questionOff = document.getElementById("questionOff");
 
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
+    proceedButton.removeAttribute("disabled");
     proceedButton.style.backgroundColor = "#00ffff";
     proceedButton.style.boxShadow = "3px 2px 24px #00ffff";
     proceedButton.style.cursor = "pointer";
@@ -144,11 +145,17 @@ const proceedOn = () => {
   proceed.style.backgroundColor = "#00ffff";
   proceed.style.boxShadow = "3px 2px 24px #00ffff";
   proceed.style.cursor = "pointer";
+  proceed.removeAttribute("disabled");
 };
-
+const proceedOff = () => {
+  proceed.style.backgroundColor = "grey";
+  proceed.style.boxShadow = "3px 2px 24px grey";
+  proceed.style.cursor = "pointer";
+  proceed.disabled;
+};
 let correctAnswer = [];
 let wrongtAnswer = [];
-
+proceedOff();
 const getQuestion = () => {
   let existButton = document.querySelectorAll(".button");
   existButton.forEach((button) => button.remove());
@@ -250,10 +257,11 @@ proceed.addEventListener("click", () => {
     clearInterval(timer);
   }
   numberOfQuestions.push(1);
-  if (questions.length <= 0) {
+  if (questions.length < 1) {
     test.setAttribute("hidden", "true");
     results.removeAttribute("hidden");
     clearInterval(timer);
+    document.dispatchEvent(new CustomEvent("resultsPage"));
   }
   timerActive();
   getQuestion();
@@ -296,10 +304,12 @@ const timerActive = () => {
       } else if (selectedButton.querySelector(".label").innerText === answeredQuestion.correct_answer) {
         correctAnswer.push(selectedButton.querySelector(".label").innerText);
       }
-      if (questions.length <= 0) {
+      if (questions.length < 1) {
         test.setAttribute("hidden", "true");
         results.removeAttribute("hidden");
         clearInterval(timer);
+
+        document.dispatchEvent(new CustomEvent("resultsPage"));
       }
       getQuestion();
       console.log(correctAnswer);
@@ -309,3 +319,15 @@ const timerActive = () => {
 };
 
 //RESULTS PAGE
+const correct = document.querySelector(".percent-correct");
+const incorrect = document.querySelector(".percent-wrong");
+console.log(correct);
+
+const percCorrect = document.addEventListener("resultsPage", () => {
+  console.log("correct", correctAnswer);
+  console.log("wrong:", wrongtAnswer);
+  let percent = (correctAnswer.length / 10) * 100;
+  correct.innerText = `${percent.toString()}%`;
+  let percentW = (wrongtAnswer.length / 10) * 100;
+  incorrect.innerText = `${percentW.toString()}%`;
+});
