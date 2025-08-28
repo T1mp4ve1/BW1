@@ -151,10 +151,10 @@ const getQuestion = () => {
   question.innerText = currentQuestion.question;
   for (let i = 0; i < currentAnswer.length; i++) {
     if (i < 2) {
-      button.innerText = currentAnswer[i];
+      //button.innerText = currentAnswer[i];
       up.appendChild(button);
     } else {
-      button.innerText = currentAnswer[i];
+      //button.innerText = currentAnswer[i];
       down.appendChild(button);
     }
   }
