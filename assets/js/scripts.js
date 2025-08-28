@@ -248,6 +248,7 @@ const proceedResults = () => {
 };
 let timer;
 let numberOfQuestions = [1];
+
 proceed.addEventListener("click", () => {
   if (timer) {
     clearInterval(timer);
@@ -272,6 +273,7 @@ proceed.addEventListener("click", () => {
   }
   numberOfQuestions.push(1);
   if (questions.length < 1) {
+    GraphResult()
     test.setAttribute("hidden", "true");
     results.removeAttribute("hidden");
     clearInterval(timer);
@@ -284,7 +286,7 @@ proceed.addEventListener("click", () => {
 });
 
 const timerActive = () => {
-  let seconds = 3000;
+  let seconds = 60;
   const count = document.getElementsByClassName("number")[0];
   const progress = document.getElementsByClassName("progress")[0];
 
@@ -322,6 +324,7 @@ const timerActive = () => {
         correctAnswer.push(selectedButton.querySelector(".label").innerText);
       }
       if (questions.length < 1) {
+        GraphResult()
         test.setAttribute("hidden", "true");
         results.removeAttribute("hidden");
         clearInterval(timer);
@@ -344,9 +347,9 @@ console.log(correct);
 const percCorrect = document.addEventListener("resultsPage", () => {
   console.log("correct", correctAnswer);
   console.log("wrong:", wrongtAnswer);
-  let percent = (correctAnswer.length / 100) * 100;
+  let percent = (correctAnswer.length / 10) * 100;
   correct.innerText = `${percent.toString()}%`;
-  let percentW = (wrongtAnswer.length / 100) * 100;
+  let percentW = (wrongtAnswer.length / 10) * 100;
   incorrect.innerText = `${percentW.toString()}%`;
 });
 
@@ -360,10 +363,6 @@ function setProgressResult(percent) {
 }
 
 function GraphResult() {
-  let percent = (correctAnswer.length / 100) * 100;
-  console.log(percent);
+  let percent = (correctAnswer.length / 10) * 100;
   setProgressResult(percent);
 }
-GraphResult()
-
-const rateUs = document.getElementById("rateUs")
