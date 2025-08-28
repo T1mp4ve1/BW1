@@ -232,7 +232,39 @@ const get = document.addEventListener("testPageVisible", () => {
   }
 });
 
+let timer;
 let numberOfQuestions = [1];
+proceed.addEventListener("click", () => {
+  if (timer) {
+    clearInterval(timer);
+  }
+
+  let number = numberOfQuestions.length + 1;
+  questionOff.innerText = number.toString();
+  console.log(numberOfQuestions.length);
+  let selectedButton = document.querySelector(".button_choice");
+  if (selectedButton) {
+    let text = selectedButton.querySelector("label").innerText;
+    if (text === answeredQuestion.correct_answer) {
+      correctAnswer.push(text);
+    } else {
+      wrongtAnswer.push(text);
+    }
+    questions.splice(questionPos, 1);
+  }
+  if (timer) {
+    clearInterval(timer);
+  }
+  numberOfQuestions.push(1);
+  console.log(numberOfQuestions);
+
+  timerActive();
+  getQuestion();
+  console.log(answeredQuestion);
+  console.log(questions);
+  console.log(correctAnswer);
+  console.log(wrongtAnswer);
+});
 
 const timerActive = () => {
   let seconds = 3;
@@ -247,38 +279,7 @@ const timerActive = () => {
     progress.style.strokeDashoffset = offset;
   }
 
-  proceed.addEventListener(
-    "click",
-    () => {
-      let number = numberOfQuestions.length + 1;
-      questionOff.innerText = number.toString();
-      console.log(numberOfQuestions.length);
-      let selectedButton = document.querySelector(".button_choice");
-      if (selectedButton) {
-        let text = selectedButton.querySelector("label").innerText;
-        if (text === answeredQuestion.correct_answer) {
-          correctAnswer.push(text);
-        } else {
-          wrongtAnswer.push(text);
-        }
-        questions.splice(questionPos, 1);
-      }
-      clearInterval(timer);
-
-      numberOfQuestions.push(1);
-      console.log(numberOfQuestions);
-
-      timerActive();
-      getQuestion();
-      console.log(answeredQuestion);
-      console.log(questions);
-      console.log(correctAnswer);
-      console.log(wrongtAnswer);
-    },
-    { once: true }
-  );
-
-  const timer = setInterval(() => {
+  timer = setInterval(() => {
     console.log(numberOfQuestions.length);
     const remaining = seconds--;
     count.innerText = remaining;
@@ -287,6 +288,9 @@ const timerActive = () => {
     setProgress(percent);
 
     if (remaining <= 0) {
+      numberOfQuestions.push(1);
+      let number = numberOfQuestions.length;
+      questionOff.innerText = number.toString();
       clearInterval(timer);
       timerActive();
       let selectedButton = document.querySelector(".button_choice");
