@@ -279,8 +279,6 @@ const timerActive = () => {
   );
 
   const timer = setInterval(() => {
-    let number = numberOfQuestions.length + 1;
-    questionOff.innerText = number.toString();
     console.log(numberOfQuestions.length);
     const remaining = seconds--;
     count.innerText = remaining;
@@ -289,8 +287,6 @@ const timerActive = () => {
     setProgress(percent);
 
     if (remaining <= 0) {
-      // questionOff.innerText = number.toString();
-      // console.log(numberOfQuestions.length);
       clearInterval(timer);
       timerActive();
       let selectedButton = document.querySelector(".button_choice");
