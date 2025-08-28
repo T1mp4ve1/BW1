@@ -1,8 +1,6 @@
 const checkBox = document.querySelector(".bottom input");
 const proceedButton = document.querySelector(".bottom button");
-
-// console.log(checkBox);
-// console.log(proceedButton);
+const questionOff = document.getElementById("questionOff");
 
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
@@ -175,6 +173,7 @@ const getQuestion = () => {
       const button = document.createElement("div");
       const button_input = document.createElement("input");
       const button_label = document.createElement("label");
+      button_label.className = "label";
       button_input.classList.add("answer");
       button_input.type = "radio";
       button_input.name = "radio";
@@ -199,6 +198,7 @@ const getQuestion = () => {
       const button = document.createElement("div");
       const button_input = document.createElement("input");
       const button_label = document.createElement("label");
+      button_label.className = "label";
       button_input.classList.add("answer");
       button_input.type = "radio";
       button_input.name = "radio";
@@ -232,8 +232,10 @@ const get = document.addEventListener("testPageVisible", () => {
   }
 });
 
+let numberOfQuestions = [1];
+
 const timerActive = () => {
-  let seconds = 60;
+  let seconds = 3;
   const count = document.getElementsByClassName("number")[0];
   const progress = document.getElementsByClassName("progress")[0];
 
@@ -245,27 +247,41 @@ const timerActive = () => {
     progress.style.strokeDashoffset = offset;
   }
 
-  proceed.addEventListener("click", () => {
-    let selectedButton = document.querySelector(".button_choice");
-    if (selectedButton) {
-      let text = selectedButton.querySelector("label").innerText;
-      if (text === answeredQuestion.correct_answer) {
-        correctAnswer.push(text);
-      } else {
-        wrongtAnswer.push(text);
+  proceed.addEventListener(
+    "click",
+    () => {
+      let number = numberOfQuestions.length + 1;
+      questionOff.innerText = number.toString();
+      console.log(numberOfQuestions.length);
+      let selectedButton = document.querySelector(".button_choice");
+      if (selectedButton) {
+        let text = selectedButton.querySelector("label").innerText;
+        if (text === answeredQuestion.correct_answer) {
+          correctAnswer.push(text);
+        } else {
+          wrongtAnswer.push(text);
+        }
+        questions.splice(questionPos, 1);
       }
-      questions.splice(questionPos, 1);
-    }
-    clearInterval(timer);
-    timerActive();
+      clearInterval(timer);
 
-    getQuestion();
-    console.log(answeredQuestion);
-    console.log(questions);
-    console.log(correctAnswer);
-    console.log(wrongtAnswer);
-  });
+      numberOfQuestions.push(1);
+      console.log(numberOfQuestions);
+
+      timerActive();
+      getQuestion();
+      console.log(answeredQuestion);
+      console.log(questions);
+      console.log(correctAnswer);
+      console.log(wrongtAnswer);
+    },
+    { once: true }
+  );
+
   const timer = setInterval(() => {
+    let number = numberOfQuestions.length + 1;
+    questionOff.innerText = number.toString();
+    console.log(numberOfQuestions.length);
     const remaining = seconds--;
     count.innerText = remaining;
 
@@ -273,14 +289,18 @@ const timerActive = () => {
     setProgress(percent);
 
     if (remaining <= 0) {
+      // questionOff.innerText = number.toString();
+      // console.log(numberOfQuestions.length);
       clearInterval(timer);
       timerActive();
       let selectedButton = document.querySelector(".button_choice");
       if (!selectedButton) {
         wrongtAnswer.push(0);
-      } else if (text === answeredQuestion.correct_answer) {
-        let text = selectedButton.querySelector("label").innerText;
-        correctAnswer.push(text);
+      } else if (
+        selectedButton.querySelector(".label").innerText ===
+        answeredQuestion.correct_answer
+      ) {
+        correctAnswer.push(selectedButton.querySelector(".label").innerText);
       }
       getQuestion();
       console.log(correctAnswer);
