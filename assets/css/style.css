@@ -351,7 +351,6 @@ circle {
 
 .progress-graph {
   stroke: #00ffff;
-  stroke-linecap: square;
   stroke-dasharray: 283;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset s linear;

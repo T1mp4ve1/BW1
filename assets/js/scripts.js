@@ -31,13 +31,18 @@ const questions = [
     difficulty: "easy",
     question: "What does CPU stand for?",
     correct_answer: "Central Processing Unit",
-    incorrect_answers: ["Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
+    incorrect_answers: [
+      "Central Process Unit",
+      "Computer Personal Unit",
+      "Central Processor Unit",
+    ],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+    question:
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
     correct_answer: "Final",
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -53,7 +58,8 @@ const questions = [
     category: "Science: Computers",
     type: "boolean",
     difficulty: "easy",
-    question: "Pointers were not used in the original C programming language; they were added later on in C++.",
+    question:
+      "Pointers were not used in the original C programming language; they were added later on in C++.",
     correct_answer: "False",
     incorrect_answers: ["True"],
   },
@@ -61,7 +67,8 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the most preferred image format used for logos in the Wikimedia database?",
+    question:
+      "What is the most preferred image format used for logos in the Wikimedia database?",
     correct_answer: ".svg",
     incorrect_answers: [".png", ".jpeg", ".gif"],
   },
@@ -71,13 +78,18 @@ const questions = [
     difficulty: "easy",
     question: "In web design, what does CSS stand for?",
     correct_answer: "Cascading Style Sheet",
-    incorrect_answers: ["Counter Strike: Source", "Corrective Style Sheet", "Computer Style Sheet"],
+    incorrect_answers: [
+      "Counter Strike: Source",
+      "Corrective Style Sheet",
+      "Computer Style Sheet",
+    ],
   },
   {
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "What is the code name for the mobile operating system Android 7.0?",
+    question:
+      "What is the code name for the mobile operating system Android 7.0?",
     correct_answer: "Nougat",
     incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
   },
@@ -101,7 +113,8 @@ const questions = [
     category: "Science: Computers",
     type: "multiple",
     difficulty: "easy",
-    question: "Which programming language shares its name with an island in Indonesia?",
+    question:
+      "Which programming language shares its name with an island in Indonesia?",
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
@@ -271,7 +284,7 @@ proceed.addEventListener("click", () => {
 });
 
 const timerActive = () => {
-  let seconds = 3;
+  let seconds = 3000;
   const count = document.getElementsByClassName("number")[0];
   const progress = document.getElementsByClassName("progress")[0];
 
@@ -302,7 +315,10 @@ const timerActive = () => {
       let selectedButton = document.querySelector(".button_choice");
       if (!selectedButton) {
         wrongtAnswer.push(0);
-      } else if (selectedButton.querySelector(".label").innerText === answeredQuestion.correct_answer) {
+      } else if (
+        selectedButton.querySelector(".label").innerText ===
+        answeredQuestion.correct_answer
+      ) {
         correctAnswer.push(selectedButton.querySelector(".label").innerText);
       }
       if (questions.length < 1) {
@@ -320,6 +336,7 @@ const timerActive = () => {
 };
 
 //RESULTS PAGE
+const circle_graph = document.querySelector(".progress-graph");
 const correct = document.querySelector(".percent-correct");
 const incorrect = document.querySelector(".percent-wrong");
 console.log(correct);
@@ -327,8 +344,26 @@ console.log(correct);
 const percCorrect = document.addEventListener("resultsPage", () => {
   console.log("correct", correctAnswer);
   console.log("wrong:", wrongtAnswer);
-  let percent = (correctAnswer.length / 10) * 100;
+  let percent = (correctAnswer.length / 100) * 100;
   correct.innerText = `${percent.toString()}%`;
-  let percentW = (wrongtAnswer.length / 10) * 100;
+  let percentW = (wrongtAnswer.length / 100) * 100;
   incorrect.innerText = `${percentW.toString()}%`;
 });
+
+const radiusGraph = 40;
+const circumference = 2 * Math.PI * radiusGraph;
+
+function setProgressResult(percent) {
+  const offset = circumference - (percent / 100) * circumference;
+  circle_graph.style.strokeDashoffset = offset;
+  console.log(offset);
+}
+
+function GraphResult() {
+  let percent = (correctAnswer.length / 100) * 100;
+  console.log(percent);
+  setProgressResult(percent);
+}
+GraphResult()
+
+const rateUs = document.getElementById("rateUs")
