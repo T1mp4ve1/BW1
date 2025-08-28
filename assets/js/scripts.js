@@ -121,6 +121,7 @@ const questions = [
   },
 ];
 
+
 const up = document.getElementById("up");
 const down = document.getElementById("down");
 const proceedConteiner = document.querySelector(".proceed");
