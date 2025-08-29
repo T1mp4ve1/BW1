@@ -264,13 +264,6 @@ document.addEventListener("testPageVisible", () => {
   }
 });
 
-// const proceedResults = () => {
-//   if (questions.length <= 0) {
-//     test.setAttribute("hidden", "true");
-//     results.removeAttribute("hidden");
-//   }
-// };
-
 proceed.addEventListener("click", () => {
   if (timer) {
     clearInterval(timer);
@@ -406,7 +399,7 @@ const resultsText = () => {
   }
 };
 
-// FEEDBACK PAHE
+// FEEDBACK PAGE
 
 const feedback = rateButton.addEventListener("click", () => {
   results.setAttribute("hidden", "true");
