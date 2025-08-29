@@ -399,14 +399,14 @@ const resultsText = () => {
   }
 };
 
-// FEEDBACK PAGE
-
 const feedback = rateButton.addEventListener("click", () => {
   results.setAttribute("hidden", "true");
   feedPage.removeAttribute("hidden");
 
   document.dispatchEvent(new CustomEvent("visibleFeedback"));
 });
+
+// FEEDBACK PAGE
 
 const feedFunction = document.addEventListener("visibleFeedback", () => {
   const comment = document.getElementById("comment");
