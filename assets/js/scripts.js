@@ -2,6 +2,35 @@ const checkBox = document.querySelector(".bottom input");
 const proceedButton = document.querySelector(".bottom button");
 const questionOff = document.getElementById("questionOff");
 
+const welcome = document.querySelector(".welcome");
+const test = document.querySelector("#pagina_test");
+
+const up = document.getElementById("up");
+const down = document.getElementById("down");
+const proceedConteiner = document.querySelector(".proceed");
+
+const question = document.querySelector("#questions h3");
+
+const results = document.querySelector(".results");
+
+const circle_graph = document.querySelector(".progress-graph");
+const correct = document.querySelector(".percent-correct");
+const incorrect = document.querySelector(".percent-wrong");
+
+const feedPage = document.querySelector(".feedback");
+const rateButton = document.getElementById("rateButton");
+
+const stars = document.querySelectorAll(".star");
+
+const feedPanel = document.querySelector(".feedbackAlert");
+const feedEmoji = document.querySelector(".emoji");
+const restartQuiz = document.querySelector(".refreshButton");
+
+let timer;
+let numberOfQuestions = [1];
+
+// WELCOME PAGE
+
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
     proceedButton.removeAttribute("disabled");
@@ -14,15 +43,14 @@ checkBox.addEventListener("change", () => {
   }
 });
 
-const welcome = document.querySelector(".welcome");
-const test = document.querySelector("#pagina_test");
-
 proceedButton.addEventListener("click", () => {
   welcome.setAttribute("hidden", "true");
   test.removeAttribute("hidden");
 
   document.dispatchEvent(new CustomEvent("testPageVisible"));
 });
+
+// QUESTONS PAGE
 
 const questions = [
   {
@@ -120,11 +148,7 @@ const questions = [
   },
 ];
 
-const up = document.getElementById("up");
-const down = document.getElementById("down");
-const proceedConteiner = document.querySelector(".proceed");
-
-const question = document.querySelector("#questions h3");
+// RANDOMIZING QUESTIONS/ANSWERS
 
 let answeredQuestion = [];
 
@@ -164,7 +188,6 @@ const proceedOn = () => {
 const proceedOff = () => {
   proceed.style.backgroundColor = "grey";
   proceed.style.boxShadow = "3px 2px 24px grey";
-  proceed.style.cursor = "pointer";
   proceed.setAttribute("disabled", true);
 };
 let correctAnswer = [];
@@ -229,27 +252,24 @@ const getQuestion = () => {
         button.classList.add("button_choice");
 
         button_input.checked = true;
-        // console.log(answeredQuestion);
       });
     }
   }
 };
 
-const get = document.addEventListener("testPageVisible", () => {
+document.addEventListener("testPageVisible", () => {
   if (!test.hidden) {
     timerActive();
     getQuestion();
   }
 });
-const results = document.querySelector(".results");
-const proceedResults = () => {
-  if (questions.length <= 0) {
-    test.setAttribute("hidden", "true");
-    results.removeAttribute("hidden");
-  }
-};
-let timer;
-let numberOfQuestions = [1];
+
+// const proceedResults = () => {
+//   if (questions.length <= 0) {
+//     test.setAttribute("hidden", "true");
+//     results.removeAttribute("hidden");
+//   }
+// };
 
 proceed.addEventListener("click", () => {
   if (timer) {
@@ -258,7 +278,6 @@ proceed.addEventListener("click", () => {
 
   let number = numberOfQuestions.length + 1;
   questionOff.innerText = number.toString();
-  console.log(numberOfQuestions.length);
   let selectedButton = document.querySelector(".button_choice");
   if (selectedButton) {
     let text = selectedButton.querySelector("label").innerText;
@@ -284,9 +303,9 @@ proceed.addEventListener("click", () => {
   }
   timerActive();
   getQuestion();
-
-  console.log(questions);
 });
+
+// TIMER
 
 const timerActive = () => {
   if (questions.length === 0) {
@@ -314,7 +333,6 @@ const timerActive = () => {
 
     if (remaining <= 0) {
       questions.splice(questionPos, 1);
-      console.log(questions);
       numberOfQuestions.push(1);
       let number = numberOfQuestions.length;
       questionOff.innerText = number.toString();
@@ -339,28 +357,21 @@ const timerActive = () => {
         document.dispatchEvent(new CustomEvent("resultsPage"));
       }
       getQuestion();
-      console.log(correctAnswer);
-      console.log(wrongtAnswer);
     }
   }, 1000);
 };
 
 //RESULTS PAGE
-const circle_graph = document.querySelector(".progress-graph");
-const correct = document.querySelector(".percent-correct");
-const incorrect = document.querySelector(".percent-wrong");
-console.log(correct);
 
 const percCorrect = document.addEventListener("resultsPage", () => {
-  console.log("correct", correctAnswer);
-  console.log("wrong:", wrongtAnswer);
   let percent = (correctAnswer.length / 10) * 100;
   correct.innerText = `${percent.toString()}%`;
   let percentW = (wrongtAnswer.length / 10) * 100;
   incorrect.innerText = `${percentW.toString()}%`;
   answers();
-  console.log(correctAnswer.length, wrongtAnswer.length);
 });
+
+// GRAPH
 
 const radiusGraph = 40;
 const circumference = 2 * Math.PI * radiusGraph;
@@ -368,7 +379,6 @@ const circumference = 2 * Math.PI * radiusGraph;
 function setProgressResult(percent) {
   const offset = circumference - (percent / 100) * circumference;
   circle_graph.style.strokeDashoffset = offset;
-  console.log(offset);
 }
 
 function GraphResult() {
@@ -395,8 +405,9 @@ const resultsText = () => {
       "We have identified the areas you should focus on. Take your time to prepare and retake the exam. We're here to support you on your journey!";
   }
 };
-const feedPage = document.querySelector(".feedback");
-const rateButton = document.getElementById("rateButton");
+
+// FEEDBACK PAHE
+
 const feedback = rateButton.addEventListener("click", () => {
   results.setAttribute("hidden", "true");
   feedPage.removeAttribute("hidden");
@@ -404,11 +415,9 @@ const feedback = rateButton.addEventListener("click", () => {
   document.dispatchEvent(new CustomEvent("visibleFeedback"));
 });
 
-const stars = document.querySelectorAll(".star");
 const feedFunction = document.addEventListener("visibleFeedback", () => {
   const comment = document.getElementById("comment");
   const send = document.getElementById("send");
-  console.log(comment, send);
   send.style.backgroundColor = "grey";
   send.style.boxShadow = "3px 2px 24px grey";
   send.style.cursor = "none";
@@ -417,7 +426,6 @@ const feedFunction = document.addEventListener("visibleFeedback", () => {
     if (comment.value.trim() === "") {
       send.style.backgroundColor = "grey";
       send.style.boxShadow = "3px 2px 24px grey";
-      send.style.cursor = "none";
     } else {
       send.removeAttribute("disabled");
       send.style.backgroundColor = "#00ffff";
@@ -441,7 +449,6 @@ const feedFunction = document.addEventListener("visibleFeedback", () => {
       });
     });
     star.addEventListener("click", () => {
-      console.log("sto cliccando");
       stars.forEach((singleStar, i) => {
         if (i <= index) {
           singleStar.classList.add("starActive");
@@ -452,9 +459,6 @@ const feedFunction = document.addEventListener("visibleFeedback", () => {
     });
   });
 
-  const feedPanel = document.querySelector(".feedbackAlert");
-  const feedEmoji = document.querySelector(".emoji");
-  const restartQuiz = document.querySelector(".refreshButton");
   send.onclick = function () {
     const activeStars = document.querySelectorAll(".starActive").length;
 
@@ -469,17 +473,8 @@ const feedFunction = document.addEventListener("visibleFeedback", () => {
   };
 
   restartQuiz.onclick = function () {
-    // feedPage.setAttribute("hidden", "true");
     feedPanel.setAttribute("hidden", "true");
     welcome.removeAttribute("hidden");
     location.reload();
   };
 });
-
-// <div class="feedbackAlert" hidden>
-//   <p class="feedText">Thanks for your feedback!</p>
-//   <img src="./assets/img/9_10.svg" alt="emoji" class="emoji" />
-//   <button class="refreshButton">
-//     <i class="fas fa-retweet"></i>
-//     Try Again!
-//   </button>
