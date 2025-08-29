@@ -224,7 +224,11 @@ circle {
   bottom: 0;
   border-radius: 40px;
   padding: 3px;
-  background: linear-gradient(170deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    170deg,
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
   mask-composite: xor;
   -webkit-mask-composite: xor;
@@ -245,7 +249,11 @@ circle {
   border-radius: 40px;
   display: inline-block;
   width: 30%;
-  background-image: linear-gradient(180deg, rgba(201, 0, 145, 1) 0%, rgba(143, 0, 123, 1) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(201, 0, 145, 1) 0%,
+    rgba(143, 0, 123, 1) 100%
+  );
   padding: 1%;
 }
 
@@ -258,7 +266,11 @@ circle {
   bottom: 0;
   border-radius: 40px;
   padding: 3px;
-  background: linear-gradient(170deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    170deg,
+    rgb(255, 255, 255) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
   mask-composite: xor;
   -webkit-mask-composite: xor;
@@ -446,6 +458,11 @@ h5 {
   margin: 0;
   margin-top: 50px;
   box-shadow: 0px 0px 22px #40246e;
+  transition: background-color 0.5s;
+}
+.results button:hover {
+  background-color: #d90d9c;
+  color: #00ffff;
 }
 
 .graph-lettTitle {
@@ -554,6 +571,7 @@ h5 {
   font-size: 18px;
   padding-left: 2.3rem;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
 #comment:focus {
@@ -566,5 +584,44 @@ h5 {
 }
 
 .red {
-  color: red !important;
+  color: #d90d9c !important;
+}
+.feedbackAlert {
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  background-color: #481a6559;
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  border-radius: 12px 12px 12px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.346);
+  border-top: 1px solid #00ffff;
+  border-bottom: 1px solid #00ffff;
+}
+i {
+  color: #00ffff;
+}
+.emoji {
+  width: 100px;
+  margin-top: 20px;
+}
+.refreshButton {
+  cursor: pointer;
+  background-color: grey;
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  margin-top: 30px;
+  font-size: 20px;
+  transition: background-color 0.5s;
+  z-index: 1000;
+}
+.refreshButton:hover {
+  background-color: #00ffff;
+}
+.feedText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #00ffff;
 }

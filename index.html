@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Benchmark</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
     <div class="logo">
       <img src="./assets/img/epicode_logo.png" alt="logo" />
+    </div>
+    <div class="feedbackAlert" hidden>
+      <p class="feedText">Thanks for your feedback!</p>
+      <img src="./assets/img/0_6.svg" alt="emoji" class="emoji" />
+      <button class="refreshButton">
+        <i class="fas fa-retweet"></i>
+        Try Again!
+      </button>
     </div>
 
     <div class="body_class">
@@ -17,11 +32,15 @@
         <h1>Welcome to <br /><span>your exam</span></h1>
         <h2>Instruction</h2>
         <p>
-          We don't expect most engineers to know the answers to all of these questions,<br />
+          We don't expect most engineers to know the answers to all of these
+          questions,<br />
           so don't worry if you're unsure of a few of them.
         </p>
         <ul>
-          <li>Each question is <span>timed</span> and can only be <span>answered once</span>.</li>
+          <li>
+            Each question is <span>timed</span> and can only be
+            <span>answered once</span>.
+          </li>
           <li>
             Changing browser tab or opening other windows will
             <span> invalidate the question.</span>
@@ -30,7 +49,9 @@
         </ul>
         <div class="bottom">
           <input type="checkbox" />
-          <label for="checkbox"> I promise to answer myself without help from anyone</label>
+          <label for="checkbox">
+            I promise to answer myself without help from anyone</label
+          >
           <button id="proceed" disabled>PROCEED</button>
         </div>
       </div>
@@ -75,15 +96,25 @@
             </div> -->
           </div>
 
-          <p id="questionB">QUESTION <span id="questionOff">1</span><span id="evidenz">/10</span></p>
+          <p id="questionB">
+            QUESTION <span id="questionOff">1</span
+            ><span id="evidenz">/10</span>
+          </p>
           <button id="proceedQuest" disabled>PROCEED</button>
         </div>
       </div>
 
       <div class="results" hidden>
         <div class="graph-cont">
-          <p class="graph-lettTitle">Congratulation!<br /><span id="PasedOrNo"> You passed the exam.</span></p>
-          <p class="graph-lettp">We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)</p>
+          <p class="graph-lettTitle">
+            Congratulation!<br /><span id="PasedOrNo">
+              You passed the exam.</span
+            >
+          </p>
+          <p class="graph-lettp">
+            We'll send you the certificate in few minutes. Check your email
+            (including promotions / spam folder)
+          </p>
         </div>
 
         <h4>Results</h4>
@@ -92,7 +123,9 @@
           <div class="correct">
             <h5>Correct</h5>
             <span class="percent-correct">66.8%</span>
-            <p class="quest"><span class="answer-correct">4</span>/10 questions</p>
+            <p class="quest">
+              <span class="answer-correct">4</span>/10 questions
+            </p>
           </div>
 
           <div class="graph">
@@ -107,7 +140,9 @@
           <div class="wrong">
             <h5>Wrong</h5>
             <span class="percent-wrong">33.7%</span>
-            <p class="quest"><span class="answer-wrong">2</span> /10 questions</p>
+            <p class="quest">
+              <span class="answer-wrong">2</span> /10 questions
+            </p>
           </div>
         </div>
         <button id="rateButton">RATE US</button>
@@ -115,22 +150,52 @@
 
       <div class="feedback" hidden>
         <h4>Tell us how it's going</h4>
-        <p class="paragraph-feed">From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?</p>
+        <p class="paragraph-feed">
+          From 0 to 10, how likely are you to recommend EPICODE to a friend or a
+          colleague?
+        </p>
         <div class="stars">
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
-          <div class="star"><img src="./assets/img/star.svg" alt="" /></div>
+          <div id="rate_1" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_2" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_3" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_4" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_5" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_6" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_7" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_8" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_9" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
+          <div id="rate_10" class="star">
+            <img src="./assets/img/star.svg" alt="" />
+          </div>
         </div>
-        <p class="paragraph-input">Leave us an open feedback about your experience so far</p>
-        <input type="text" name="comment" id="comment" placeholder="Write your comment here" />
-        <button id="send" disabled>SEND FEEDBACK</button>
+        <p class="paragraph-input">
+          Leave us an open feedback about your experience so far
+        </p>
+        <input
+          type="text"
+          name="comment"
+          id="comment"
+          placeholder="Write your comment here"
+        />
+        <button for="text" id="send" disabled>SEND FEEDBACK</button>
       </div>
     </div>
     <script src="assets/js/scripts.js"></script>
